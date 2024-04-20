@@ -1,5 +1,5 @@
 <div class="main-div">
-    <div class="container">
+    <div *ngIf="!ratedAll" class="container">
         <div class="wrapper">
             <div class="book-div">
                 <p>Title: {{books[index].title}}</p>
@@ -25,8 +25,13 @@
             </div>
         </div>
         <div class="buttons">
-            <button (click)="hasRated=false;" *ngIf="hasRated">Rate Again</button>
             <button (click)="nextBook()" *ngIf="hasRated">Go to next book</button>
         </div>
     </div>
+    <div *ngIf="ratedAll && !hasFinished" class="rated-all">
+        <h1>Thank you! You rated all of our books!</h1>
+        <button (click)="readAgain()">Rate all of them again</button>
+        <button (click)="finish()">No thank you!</button>
+    </div>
+    <h1 *ngIf="hasFinished">Thank you once again! You rated all of the books! Now you can chill</h1>
 </div>

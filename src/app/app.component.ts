@@ -78,11 +78,13 @@ export class AppComponent {
   public authorReference;
 
   public hasRated:boolean=false;
+  public ratedAll:boolean=false;
+  public hasFinished:boolean=false;
 
   private changeIndex() {
     this.index++;
     if (this.index >= this.books.length) {
-      this.index = 0;
+      this.ratedAll=true;
     }
   }
 
@@ -99,6 +101,15 @@ export class AppComponent {
         this.authorReference= input.target;
         break;
     }
+  }
+
+  public readAgain(){
+    this.index=0;
+    this.ratedAll=false;
+  }
+
+  public finish(){
+    this.hasFinished=true;
   }
 
   public editBook(){
