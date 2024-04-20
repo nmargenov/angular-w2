@@ -66,3 +66,14 @@
     display: flex;
     align-items: center;
 }
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons button{
+    height: 50px;
+    margin-top: 20px;
+    cursor: pointer;
+}
