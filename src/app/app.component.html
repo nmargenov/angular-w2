@@ -6,5 +6,16 @@
             <p>Author: {{books[index].author}}</p>
             <p>Rating: {{calculateRating(books[index].rating)}}</p>
         </div>
+
+        <div class="rating-buttons">
+            <p>Rate this book</p>
+            <div>
+            <button (click)="giveRating(1)">1</button>
+            <button (click)="giveRating(2)">2</button>
+            <button (click)="giveRating(3)">3</button>
+            <button (click)="giveRating(4)">4</button>
+            <button (click)="giveRating(5)">5</button>
+        </div>
+        </div>
     </div>
 </div>

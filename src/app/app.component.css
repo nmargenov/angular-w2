@@ -8,6 +8,9 @@
 .container{
     max-width: 800px;
     margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .book-div{
@@ -16,4 +19,30 @@
     padding: 20px;
     background-color: rgb(210, 210, 210);
     margin: 20px 0;
+}
+
+.rating-buttons{
+    background-color: rgb(210, 210, 210);
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px 20px 20px;
+    border-radius: 20px;
+}
+
+.rating-buttons div{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.rating-buttons button{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.rating-buttons button:hover{
+    background-color: green;
 }

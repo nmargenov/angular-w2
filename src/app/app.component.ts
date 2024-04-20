@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'booksApp';
 
-  public index = 1;
+  public index = 0;
 
   public books: IBook[] = [
     {
@@ -66,6 +66,18 @@ export class AppComponent {
       rating: [4, 3, 5, 4, 3, 4]
     }
   ];
+
+  private changeIndex(){
+    this.index++;
+    if(this.index>=this.books.length){
+      this.index=0;
+    }
+  }
+
+  public giveRating(rating:number){
+    this.books[this.index].rating.push(rating);
+    this.changeIndex();
+  }
 
   public calculateRating(ratings:number[]){
     let sum = 0;
