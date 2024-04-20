@@ -1,4 +1,4 @@
-import { Component, numberAttribute } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { IBook } from './IBook';
 import { CommonModule } from '@angular/common';
@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CommonModule],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -67,24 +67,77 @@ export class AppComponent {
     }
   ];
 
-  private changeIndex(){
+  private tempBookInfo = {
+    title: '',
+    description: '',
+    author: ''
+  }
+
+  public titleReference;
+  public descriptionReference;
+  public authorReference;
+
+  private changeIndex() {
     this.index++;
-    if(this.index>=this.books.length){
-      this.index=0;
+    if (this.index >= this.books.length) {
+      this.index = 0;
     }
   }
 
-  public giveRating(rating:number){
-    this.books[this.index].rating.push(rating);
-    this.changeIndex();
+  public getInfo(input: any) {
+    this.tempBookInfo[input.target.id] = input.target.value;
+    switch(input.target.id){
+      case 'title':
+        this.titleReference = input.target;
+        break;
+      case 'description':
+        this.descriptionReference = input.target;
+        break;
+      case 'author':
+        this.authorReference= input.target;
+        break;
+    }
   }
 
-  public calculateRating(ratings:number[]){
-    let sum = 0;
-    ratings.forEach(rate=>{
-      sum+=rate;
+  public editBook(){
+    Object.entries(this.tempBookInfo).forEach(([key, value]: [string, string]) => {
+      if (value !== '') {
+        this.books[this.index][key] = value;
+      }
     });
-    const average = sum/ratings.length;
+    this.resetFields();
+  }
+  
+
+  private resetFields(){
+    if(this.authorReference){
+      this.authorReference.value='';
+    }
+    if(this.titleReference){
+      this.titleReference.value='';
+    }
+    if(this.descriptionReference){
+      this.descriptionReference.value='';
+    }
+    this.tempBookInfo={
+      title: '',
+      description: '',
+      author: ''
+    }
+  }
+
+  public giveRating(rating: number) {
+    this.books[this.index].rating.push(rating);
+    this.editBook();
+    //this.changeIndex();
+  }
+
+  public calculateRating(ratings: number[]) {
+    let sum = 0;
+    ratings.forEach(rate => {
+      sum += rate;
+    });
+    const average = sum / ratings.length;
     return average.toFixed(1);
   }
 }

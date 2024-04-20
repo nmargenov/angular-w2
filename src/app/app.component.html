@@ -1,10 +1,17 @@
 <div class="main-div">
     <div class="container">
+        <div class="wrapper">
         <div class="book-div">
             <p>Title: {{books[index].title}}</p>
             <p>Description: {{books[index].description}}</p>
             <p>Author: {{books[index].author}}</p>
             <p>Rating: {{calculateRating(books[index].rating)}}</p>
+        </div>
+        <div class="edit-fields">
+            <input (input)="getInfo($event)" id="title" type="text" placeholder="Title">
+            <input (input)="getInfo($event)" id="description" type="text" placeholder="Description">
+            <input (input)="getInfo($event)" id="author" type="text" placeholder="Author">
+        </div>
         </div>
 
         <div class="rating-buttons">
