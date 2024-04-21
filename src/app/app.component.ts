@@ -77,7 +77,6 @@ export class AppComponent {
   public descriptionReference;
   public authorReference;
 
-  public hasRated:boolean=false;
   public ratedAll:boolean=false;
   public hasFinished:boolean=false;
 
@@ -142,12 +141,11 @@ export class AppComponent {
   public giveRating(rating: number) {
     this.books[this.index].rating.push(rating);
     this.editBook();
-    this.hasRated=true;
+    this.nextBook();
   }
 
   public nextBook(){
     this.changeIndex();
-    this.hasRated=false;
   }
 
   public calculateRating(ratings: number[]) {

@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <div *ngIf="!hasRated" class="rating-buttons">
+        <div class="rating-buttons">
             <p>Rate this book</p>
             <div>
                 <button (click)="giveRating(1)">1</button>
@@ -24,9 +24,7 @@
                 <button (click)="giveRating(5)">5</button>
             </div>
         </div>
-        <div class="buttons">
-            <button (click)="nextBook()" *ngIf="hasRated">Go to next book</button>
-        </div>
+        
     </div>
     <div *ngIf="ratedAll && !hasFinished" class="rated-all">
         <h1>Thank you! You rated all of our books!</h1>
